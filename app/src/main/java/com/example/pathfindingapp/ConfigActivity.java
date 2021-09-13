@@ -20,6 +20,7 @@ import com.google.android.material.slider.Slider;
 
 import java.util.ArrayList;
 
+// TODO: 13/09/2021 set min milliseconds 
 public class ConfigActivity extends AppCompatActivity implements GridAutofitLayoutManager.SpanCountUpdatedResult {
     private static final String TAG = "ConfigActivity";
     public static final String TYPE_ALGORITHM = "type_algorithm";
@@ -109,8 +110,8 @@ public class ConfigActivity extends AppCompatActivity implements GridAutofitLayo
         pickerRelLayout = findViewById(R.id.pickRelLayout);
         btnSubmit = findViewById(R.id.btnSubmit);
         adapter = new NodeAdapter(this);
-
-        GridAutofitLayoutManager manager = new GridAutofitLayoutManager(this, 65, this);
+        // TODO: 13/09/2021 Issue with different screen widths (colwidth)
+        GridAutofitLayoutManager manager = new GridAutofitLayoutManager(this, 115, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(manager);
         adapter.setNodes(new ArrayList<>());

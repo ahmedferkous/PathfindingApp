@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
+  <component name="AndroidLogFilters">
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="onLay" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="49ff418e-e0c4-4675-8717-a02feec8810b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/ConfigActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/ConfigActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/GridAutofitLayoutManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/GridAutofitLayoutManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/PathfindingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/PathfindingActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -11,7 +21,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[My_phone_API_30]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R58MC0ZEV7F]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -98,11 +108,55 @@
       <option name="presentableId" value="Default" />
       <updated>1631535778644</updated>
     </task>
+    <task id="LOCAL-00001" summary="Finished A*">
+      <created>1631536152441</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1631536152441</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
+    <MESSAGE value="Finished A*" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished A*" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1304" y="418" key="Github.ShareDialog" timestamp="1631535886394">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1304" y="418" key="Github.ShareDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1631535886394" />
+    <state x="1142" y="218" key="Github.UntrackedFilesDialog" timestamp="1631535899058">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1142" y="218" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1631535899058" />
+    <state width="1877" height="239" key="GridCell.Tab.0.bottom" timestamp="1631537100052">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="239" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1631537100052" />
+    <state width="1877" height="239" key="GridCell.Tab.0.center" timestamp="1631537100052">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="239" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1631537100052" />
+    <state width="1877" height="239" key="GridCell.Tab.0.left" timestamp="1631537100052">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="239" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1631537100052" />
+    <state width="1877" height="239" key="GridCell.Tab.0.right" timestamp="1631537100052">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="239" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1631537100052" />
+    <state x="519" y="330" key="SettingsEditor" timestamp="1631535841494">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="519" y="330" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1631535841494" />
+    <state x="1032" y="253" key="Vcs.Push.Dialog.v2" timestamp="1631536156635">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1032" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1631536156635" />
   </component>
 </project>

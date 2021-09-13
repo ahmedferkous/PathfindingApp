@@ -79,6 +79,7 @@ public class GridAutofitLayoutManager extends GridLayoutManager {
             setSpanCount(spanCount);
             if (spanCountUpdatedResult != null) {
                 spanCountUpdatedResult.onSpanCountResult(spanCount);
+
             }
             isColumnWidthChanged = false;
         }
@@ -86,4 +87,5 @@ public class GridAutofitLayoutManager extends GridLayoutManager {
         lastHeight = height;
         super.onLayoutChildren(recycler, state);
     }
+
 }

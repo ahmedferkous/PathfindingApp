@@ -53,7 +53,7 @@ public class PathfindingActivity extends AppCompatActivity {
 
             if (spanCount != -1 && numberOfRows != -1 && millisecondsIncrement != -1 && type != null) {
                 adapter = new NodeAdapter(this);
-                manager = new GridAutofitLayoutManager(this, 65, null);
+                manager = new GridAutofitLayoutManager(this, 115, null);
                 recView.setAdapter(adapter);
                 recView.setLayoutManager(manager);
                 setupAdapter();
@@ -203,6 +203,8 @@ public class PathfindingActivity extends AppCompatActivity {
                         NodeAdapter.SAVED = false;
                         NodeAdapter.START_NODE_EXISTS = false;
                         NodeAdapter.END_NODE_EXISTS = false;
+                        stop = false;
+                        running = false;
 
                         Intent intent = new Intent(PathfindingActivity.this, ConfigActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -379,7 +381,7 @@ public class PathfindingActivity extends AppCompatActivity {
         }
 
     }
-
+    // TODO: 13/09/2021 add other algorithms
     private class AlgorithmThread extends Thread {
         private final Node startNode, endNode;
 

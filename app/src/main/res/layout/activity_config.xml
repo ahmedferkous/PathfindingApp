@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#1A2878"
+    tools:context=".ConfigActivity">
+
+    <RelativeLayout
+        android:id="@+id/mainRelLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/pickRelLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="20dp"
+        android:visibility="invisible">
+
+        <TextView
+            android:id="@+id/txtNumberOfRows"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Number Of Rows (5)"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+
+        <com.google.android.material.slider.Slider
+            android:id="@+id/slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtNumberOfRows"
+            android:layout_marginTop="20dp"
+            android:value="5"
+            android:valueFrom="5"
+            app:tickVisible="false"
+            android:valueTo="30"
+            app:thumbColor="@color/white" />
+
+        <TextView
+            android:id="@+id/txtSelect"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/slider"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="Select Your Algorithm"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RadioGroup
+            android:id="@+id/groupRadio"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtSelect"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:checkedButton="@id/radio_astar">
+
+            <!-- In RadioGroup create the 1 Radio Button-->
+            <!-- like this we will add some more Radio Button-->
+            <RadioButton
+                android:id="@+id/radio_astar"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="A* Search Algorithm"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+            <RadioButton
+                android:id="@+id/radio_dijk"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Dijkstra's Shortest Path Algorithm"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
+
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/txtEnterSec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/groupRadio"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:text="Enter Algorithm Increment"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/edtTxtMilli"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/txtEnterSec"
+            android:layout_marginTop="20dp"
+            android:hint="Enter In Milliseconds"
+            android:inputType="number"
+            android:maxLength="5"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+
+
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/white"
+            android:text="Submit"
+            android:textColor="@color/white" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -77,7 +77,15 @@
                 android:id="@+id/radio_astar"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="A* Search"
+                android:text="A* Pathfinding"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radio_dijk"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Dijkstra's Shortest Path"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -94,15 +102,6 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Best-First Search"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
-
-
-            <RadioButton
-                android:id="@+id/radio_dijk"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Dijkstra's Shortest Path"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 

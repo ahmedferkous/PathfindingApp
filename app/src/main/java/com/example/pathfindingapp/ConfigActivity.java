@@ -23,6 +23,7 @@ import java.util.ArrayList;
 // TODO: 13/09/2021 set min milliseconds 
 public class ConfigActivity extends AppCompatActivity implements GridAutofitLayoutManager.SpanCountUpdatedResult {
     private static final String TAG = "ConfigActivity";
+    public static final int WIDTH = 65;
     public static final String TYPE_ALGORITHM = "type_algorithm";
     public static final String TYPE_SPAN_COUNT = "type_span_count";
     public static final String TYPE_ROW_COUNT = "type_row_count";
@@ -119,7 +120,7 @@ public class ConfigActivity extends AppCompatActivity implements GridAutofitLayo
         btnSubmit = findViewById(R.id.btnSubmit);
         adapter = new NodeAdapter(this, "");
         // TODO: 13/09/2021 Issue with different screen widths (colwidth)
-        GridAutofitLayoutManager manager = new GridAutofitLayoutManager(this, 65, this);
+        GridAutofitLayoutManager manager = new GridAutofitLayoutManager(this, WIDTH, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(manager);
         adapter.setNodes(new ArrayList<>());

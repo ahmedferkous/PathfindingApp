@@ -60,7 +60,7 @@ public class PathfindingActivity extends AppCompatActivity {
             if (spanCount != -1 && numberOfRows != -1 && millisecondsIncrement != -1 && type != null) {
                 stop = false;
                 adapter = new NodeAdapter(this, type);
-                manager = new GridAutofitLayoutManager(this, 65, null);
+                manager = new GridAutofitLayoutManager(this, ConfigActivity.WIDTH, null);
                 recView.setAdapter(adapter);
                 recView.setLayoutManager(manager);
                 setupAdapter();
@@ -499,23 +499,27 @@ public class PathfindingActivity extends AppCompatActivity {
         }
 
         public ArrayList<Node> bestFirstSearch(Node startNode, Node endNode) throws InterruptedException {
-            PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
             ArrayList<Node> visited = new ArrayList<>();
+            PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
             startNode.cost = 0;
             priorityQueue.add(startNode);
 
             while (!priorityQueue.isEmpty()) {
                 if (!stop) {
                     Node retrievedNode = priorityQueue.peek();
+
                     if (retrievedNode == endNode) {
                         break;
                     }
+
+                    if (!visited.contains(retrievedNode)) {
+                        visited.add(retrievedNode);
+                    }
+
                     for (Edge edge: retrievedNode.getEdges()) {
                         Node n = edge.to;
                         if (!n.isObstruction()) {
-                            if (!n.visited) {
-                                n.visited = true;
-                                visited.add(n);
+                            if (!visited.contains(n)) {
                                 n.cost = edge.getWeight() + retrievedNode.cost;
                                 n.setOpen(1);
                                 priorityQueue.add(n);
@@ -532,6 +536,7 @@ public class PathfindingActivity extends AppCompatActivity {
                     break;
                 }
             }
+
             return visited;
         }
 

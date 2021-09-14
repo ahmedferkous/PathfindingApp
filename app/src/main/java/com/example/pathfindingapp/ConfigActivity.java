@@ -29,7 +29,6 @@ public class ConfigActivity extends AppCompatActivity implements GridAutofitLayo
     public static final String TYPE_MILLI_INCREMENT = "type_milli_increment";
     public static final String A_STAR = "A_STAR";
     public static final String DIJKSTRA = "DIJKSTRA";
-    public static final String BELLMAN_FORD = "BELLMAN_FORD";
     public static final String DFS = "DEPTH_FIRST_SEARCH";
     public static final String BFS = "BEST_FIRST_SEARCH";
 
@@ -86,9 +85,6 @@ public class ConfigActivity extends AppCompatActivity implements GridAutofitLayo
                         break;
                     case R.id.radio_dijk:
                         type = DIJKSTRA;
-                        break;
-                    case R.id.radio_bellman:
-                        type = BELLMAN_FORD;
                         break;
                     case R.id.radio_dfs:
                         type = DFS;

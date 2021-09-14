@@ -477,6 +477,7 @@ public class PathfindingActivity extends AppCompatActivity {
                         Node adjNode = edge.to;
                         if (!adjNode.isObstruction()) {
                             if (edge.getWeight() + retrievedNode.cost < adjNode.cost) {
+                                Log.d(TAG, "dijkstra: " + edge.getWeight() + " " + retrievedNode.cost);
                                 adjNode.cost = edge.getWeight() + retrievedNode.cost;
                                 adjNode.parent = retrievedNode;
                                 pq.add(adjNode);
@@ -493,38 +494,6 @@ public class PathfindingActivity extends AppCompatActivity {
                         stopRunningAlgorithm();
                         break;
                     }
-            }
-            return endNode;
-        }
-        //quick note, in reality, BF is VERY much worse than dijkstra. Different spot of thread delay added because it just takes too long to update
-        public Node bellmanFord(Node startNode, Node endNode) throws InterruptedException {
-            startNode.cost = 0;
-
-            for (int i = 0; i < size; i++) {
-                if (!stop) {
-                    for (Node nodes : allNodes) {
-                        for (Edge e: nodes.getEdges()) {
-                            Node comparingNode = e.to;
-                            if (!comparingNode.isObstruction()) {
-                                if (nodes.cost + e.getWeight() < comparingNode.cost) {
-                                    if (!(nodes.cost + e.getWeight() < 0)) {
-                                        comparingNode.cost = nodes.cost + e.getWeight();
-                                        comparingNode.parent = nodes;
-                                        comparingNode.setOpen(1);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    if (!allNodes.get(i).isObstruction()) {
-                        showProgressOnAdapter(allNodes.get(i));
-                        allNodes.get(i).setOpen(0);
-                    }
-                    Thread.sleep(millisecondsIncrement);
-                } else {
-                    stopRunningAlgorithm();
-                    break;
-                }
             }
             return endNode;
         }
@@ -665,18 +634,13 @@ public class PathfindingActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     break;
-                case ConfigActivity.BELLMAN_FORD:
-                    try {
-                        reached = bellmanFord(startNode, endNode);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
                 case ConfigActivity.BFS:
                     try {
                         visited = bestFirstSearch(startNode, endNode);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
+                    break;
                 case ConfigActivity.DFS:
                     try {
                         visited = depthFirstSearch(startNode, endNode);

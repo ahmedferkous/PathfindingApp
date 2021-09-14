@@ -89,6 +89,14 @@
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
+            <RadioButton
+                android:id="@+id/radio_bfs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Best-First Search"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
 
             <RadioButton
                 android:id="@+id/radio_dijk"

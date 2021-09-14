@@ -25,6 +25,7 @@ public class Node implements Comparable<Node>{
     private boolean endNode = false;
     private boolean obstruction = false;
 
+    public boolean visited = false;
     public Node parent;
     public int f = Integer.MAX_VALUE;
     public int g = Integer.MAX_VALUE;

@@ -30,7 +30,6 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.Stack;
 
-// TODO: 14/09/2021 solution to stop algorithm running
 public class PathfindingActivity extends AppCompatActivity {
     // 115 for my phone
     // 65 for emulator
@@ -59,12 +58,12 @@ public class PathfindingActivity extends AppCompatActivity {
             type = intent.getStringExtra(ConfigActivity.TYPE_ALGORITHM);
 
             if (spanCount != -1 && numberOfRows != -1 && millisecondsIncrement != -1 && type != null) {
+                stop = false;
                 adapter = new NodeAdapter(this, type);
                 manager = new GridAutofitLayoutManager(this, 65, null);
                 recView.setAdapter(adapter);
                 recView.setLayoutManager(manager);
                 setupAdapter();
-                Log.d(TAG, "onCreate: hello?");
             }
         }
 
@@ -94,14 +93,17 @@ public class PathfindingActivity extends AppCompatActivity {
 
     private boolean validLayoutChoice() {
         if (!(NodeAdapter.START_NODE_EXISTS) && !(NodeAdapter.END_NODE_EXISTS)) {
+            Log.d(TAG, "validLayoutChoice: " + NodeAdapter.START_NODE_EXISTS + " " + NodeAdapter.END_NODE_EXISTS);
             Toast.makeText(this, "Neither the Starting Node or Ending Node has been selected!", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!NodeAdapter.START_NODE_EXISTS) {
+            Log.d(TAG, "validLayoutChoice: " + NodeAdapter.START_NODE_EXISTS + " " + NodeAdapter.END_NODE_EXISTS);
             Toast.makeText(this, "Please Select A Starting Node", Toast.LENGTH_SHORT).show();
             return false;
         }
         if (!NodeAdapter.END_NODE_EXISTS) {
+            Log.d(TAG, "validLayoutChoice: " + NodeAdapter.START_NODE_EXISTS + " " + NodeAdapter.END_NODE_EXISTS);
             Toast.makeText(this, "Please Select A End Node", Toast.LENGTH_SHORT).show();
             return false;
         }
@@ -141,8 +143,6 @@ public class PathfindingActivity extends AppCompatActivity {
                                     }
                                 });
                         builderOne.create().show();
-                    } else {
-                        Log.d(TAG, "onOptionsItemSelected: " + manager.getSpanCount());
                     }
                 }
                 break;
@@ -210,7 +210,7 @@ public class PathfindingActivity extends AppCompatActivity {
                         NodeAdapter.SAVED = false;
                         NodeAdapter.START_NODE_EXISTS = false;
                         NodeAdapter.END_NODE_EXISTS = false;
-                        stop = false;
+                        stop = true;
                         running = false;
 
                         if (algorithmThread != null) {
@@ -273,7 +273,6 @@ public class PathfindingActivity extends AppCompatActivity {
                 String type = calculateTypeOfNode(n, k, rowCounter, i + 1);
                 node.x = rowCounter;
                 node.y = numCounter;
-                Log.d(TAG, "computeGraph: " + node.x + " " + node.y);
 
                 switch (type) {
                     case TOP_LEFT:
@@ -393,7 +392,6 @@ public class PathfindingActivity extends AppCompatActivity {
 
     }
 
-    // TODO: 13/09/2021 add other algorithms
     private class AlgorithmThread extends Thread {
         private  boolean permStop = false;
         private final Node startNode, endNode;
@@ -531,6 +529,43 @@ public class PathfindingActivity extends AppCompatActivity {
             return endNode;
         }
 
+        public ArrayList<Node> bestFirstSearch(Node startNode, Node endNode) throws InterruptedException {
+            PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
+            ArrayList<Node> visited = new ArrayList<>();
+            startNode.cost = 0;
+            priorityQueue.add(startNode);
+
+            while (!priorityQueue.isEmpty()) {
+                if (!stop) {
+                    Node retrievedNode = priorityQueue.peek();
+                    if (retrievedNode == endNode) {
+                        break;
+                    }
+                    for (Edge edge: retrievedNode.getEdges()) {
+                        Node n = edge.to;
+                        if (!n.isObstruction()) {
+                            if (!n.visited) {
+                                n.visited = true;
+                                visited.add(n);
+                                n.cost = edge.getWeight() + retrievedNode.cost;
+                                n.setOpen(1);
+                                priorityQueue.add(n);
+                            }
+                        }
+                    }
+
+                    showProgressOnAdapter(retrievedNode);
+                    retrievedNode.setOpen(0);
+                    priorityQueue.remove(retrievedNode);
+                    Thread.sleep(millisecondsIncrement);
+                } else {
+                    stopRunningAlgorithm();
+                    break;
+                }
+            }
+            return visited;
+        }
+
         public ArrayList<Node> depthFirstSearch(Node startNode, Node endNode) throws InterruptedException {
             ArrayList<Node> visited = new ArrayList<>();
             Stack<Node> stack = new Stack<>();
@@ -554,6 +589,9 @@ public class PathfindingActivity extends AppCompatActivity {
                     startNode = stack.peek();
                     stack.pop();
                     Thread.sleep(millisecondsIncrement);
+                } else {
+                    stopRunningAlgorithm();
+                    break;
                 }
             }
             visited.add(endNode);
@@ -630,6 +668,12 @@ public class PathfindingActivity extends AppCompatActivity {
                 case ConfigActivity.BELLMAN_FORD:
                     try {
                         reached = bellmanFord(startNode, endNode);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                case ConfigActivity.BFS:
+                    try {
+                        visited = bestFirstSearch(startNode, endNode);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }

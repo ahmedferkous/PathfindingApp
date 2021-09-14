@@ -31,6 +31,7 @@ public class ConfigActivity extends AppCompatActivity implements GridAutofitLayo
     public static final String DIJKSTRA = "DIJKSTRA";
     public static final String BELLMAN_FORD = "BELLMAN_FORD";
     public static final String DFS = "DEPTH_FIRST_SEARCH";
+    public static final String BFS = "BEST_FIRST_SEARCH";
 
     @Override
     public void onSpanCountResult(int spanCount) {
@@ -91,6 +92,9 @@ public class ConfigActivity extends AppCompatActivity implements GridAutofitLayo
                         break;
                     case R.id.radio_dfs:
                         type = DFS;
+                        break;
+                    case R.id.radio_bfs:
+                        type = BFS;
                         break;
                     default:
                         break;

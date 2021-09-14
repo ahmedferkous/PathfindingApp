@@ -6,22 +6,44 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="onLay" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
+    <option name="TOOL_WINDOW_CUSTOM_FILTER" value="breadth" />
+    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="No Filters" />
+  </component>
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="49ff418e-e0c4-4675-8717-a02feec8810b" name="Default Changelist" comment="">
+    <list default="true" id="49ff418e-e0c4-4675-8717-a02feec8810b" name="Default Changelist" comment="updated todos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/ConfigActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/ConfigActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/GridAutofitLayoutManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/GridAutofitLayoutManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/Graph/Edge.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/Graph/Edge.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/Graph/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/Graph/Node.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/NodeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/NodeAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/PathfindingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/PathfindingActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_config.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/node_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/node_item.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[R58MC0ZEV7F]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[My_phone_API_30]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -115,17 +137,40 @@
       <option name="project" value="LOCAL" />
       <updated>1631536152441</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="updated todos">
+      <created>1631538009006</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1631538009006</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
       <path value="$PROJECT_DIR$/.." />
     </ignored-roots>
     <MESSAGE value="Finished A*" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished A*" />
+    <MESSAGE value="updated todos" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated todos" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1245" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1631608852275">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1245" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1631608852275" />
     <state x="1304" y="418" key="Github.ShareDialog" timestamp="1631535886394">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -134,29 +179,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1142" y="218" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1631535899058" />
-    <state width="1877" height="239" key="GridCell.Tab.0.bottom" timestamp="1631537100052">
+    <state width="1877" height="280" key="GridCell.Tab.0.bottom" timestamp="1631613430778">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="239" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1631537100052" />
-    <state width="1877" height="239" key="GridCell.Tab.0.center" timestamp="1631537100052">
+    <state width="1877" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1631613430778" />
+    <state width="1877" height="280" key="GridCell.Tab.0.center" timestamp="1631613430778">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="239" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1631537100052" />
-    <state width="1877" height="239" key="GridCell.Tab.0.left" timestamp="1631537100052">
+    <state width="1877" height="280" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1631613430778" />
+    <state width="1877" height="280" key="GridCell.Tab.0.left" timestamp="1631613430778">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="239" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1631537100052" />
-    <state width="1877" height="239" key="GridCell.Tab.0.right" timestamp="1631537100052">
+    <state width="1877" height="280" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1631613430778" />
+    <state width="1877" height="280" key="GridCell.Tab.0.right" timestamp="1631613430778">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="239" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1631537100052" />
+    <state width="1877" height="280" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1631613430778" />
     <state x="519" y="330" key="SettingsEditor" timestamp="1631535841494">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="519" y="330" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1631535841494" />
-    <state x="1032" y="253" key="Vcs.Push.Dialog.v2" timestamp="1631536156635">
+    <state x="1032" y="253" key="Vcs.Push.Dialog.v2" timestamp="1631538013224">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1032" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1631536156635" />
+    <state x="1032" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1631538013224" />
   </component>
 </project>

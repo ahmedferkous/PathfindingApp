@@ -32,7 +32,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="Number Of Rows (5)"
+            android:text="Number Of Rows (10)"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
@@ -44,11 +44,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/txtNumberOfRows"
             android:layout_marginTop="20dp"
-            android:value="5"
+            android:value="10"
             android:valueFrom="5"
-            app:tickVisible="false"
             android:valueTo="30"
-            app:thumbColor="@color/white" />
+            app:thumbColor="@color/white"
+            app:tickVisible="false" />
 
         <TextView
             android:id="@+id/txtSelect"
@@ -77,17 +77,34 @@
                 android:id="@+id/radio_astar"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="A* Search Algorithm"
+                android:text="A* Search"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radio_dfs"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Depth-First Search"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+
 
             <RadioButton
                 android:id="@+id/radio_dijk"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="Dijkstra's Shortest Path Algorithm"
+                android:text="Dijkstra's Shortest Path"
                 android:textColor="@color/white"
-                android:textSize="20dp" />
+                android:textSize="20sp" />
+
+            <RadioButton
+                android:id="@+id/radio_bellman"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Bellman-Ford Shortest Path"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
 
 
         </RadioGroup>

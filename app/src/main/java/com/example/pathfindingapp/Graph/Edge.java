@@ -1,8 +1,8 @@
 package com.example.pathfindingapp.Graph;
 
 public class Edge {
-    private Node from;
-    private Node to;
+    public Node from;
+    public Node to;
     private int weight;
 
     public Edge(Node from, Node to, int weight) {
@@ -11,13 +11,6 @@ public class Edge {
         this.weight = weight;
     }
 
-    public Node getFrom() {
-        return from;
-    }
-
-    public Node getTo() {
-        return to;
-    }
 
     public int getWeight() {
         return weight;

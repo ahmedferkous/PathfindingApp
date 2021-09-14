@@ -29,6 +29,8 @@ public class ConfigActivity extends AppCompatActivity implements GridAutofitLayo
     public static final String TYPE_MILLI_INCREMENT = "type_milli_increment";
     public static final String A_STAR = "A_STAR";
     public static final String DIJKSTRA = "DIJKSTRA";
+    public static final String BELLMAN_FORD = "BELLMAN_FORD";
+    public static final String DFS = "DEPTH_FIRST_SEARCH";
 
     @Override
     public void onSpanCountResult(int spanCount) {
@@ -72,7 +74,7 @@ public class ConfigActivity extends AppCompatActivity implements GridAutofitLayo
                 String type = "";
 
                 if (milli.equals("")) {
-                    milliIncrement = 1000;
+                    milliIncrement = 200;
                 } else {
                     milliIncrement = Integer.parseInt(milli);
                 }
@@ -83,6 +85,12 @@ public class ConfigActivity extends AppCompatActivity implements GridAutofitLayo
                         break;
                     case R.id.radio_dijk:
                         type = DIJKSTRA;
+                        break;
+                    case R.id.radio_bellman:
+                        type = BELLMAN_FORD;
+                        break;
+                    case R.id.radio_dfs:
+                        type = DFS;
                         break;
                     default:
                         break;
@@ -109,9 +117,9 @@ public class ConfigActivity extends AppCompatActivity implements GridAutofitLayo
         mainRelLayout = findViewById(R.id.mainRelLayout);
         pickerRelLayout = findViewById(R.id.pickRelLayout);
         btnSubmit = findViewById(R.id.btnSubmit);
-        adapter = new NodeAdapter(this);
+        adapter = new NodeAdapter(this, "");
         // TODO: 13/09/2021 Issue with different screen widths (colwidth)
-        GridAutofitLayoutManager manager = new GridAutofitLayoutManager(this, 115, this);
+        GridAutofitLayoutManager manager = new GridAutofitLayoutManager(this, 65, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(manager);
         adapter.setNodes(new ArrayList<>());

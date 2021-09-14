@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.pathfindingapp.Graph.Edge;
 import com.example.pathfindingapp.Graph.Node;
 
 import java.util.ArrayList;
@@ -25,11 +24,14 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> {
     public static final String START_NODE = "startNode";
     public static final String END_NODE = "endNode";
     public static final String OBSTRUCTION_NODE = "obstructionNode";
+
     public ArrayList<Node> nodes = new ArrayList<>();
     private Context context;
+    private String type;
 
-    public NodeAdapter(Context context) {
+    public NodeAdapter(Context context, String type) {
         this.context = context;
+        this.type = type;
     }
 
     public void setNodes(ArrayList<Node> nodes) {
@@ -52,7 +54,7 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> {
         ArrayList<Node> copiedNodes = new ArrayList<>();
         for (int i = 0; i < nodes.size(); i++) {
             Node n = nodes.get(i);
-            Node newNode = new Node(n.getValue());
+            Node newNode = new Node(n.getValue(), type);
             newNode.setObstruction(n.isObstruction());
             newNode.setStartNode(n.isStartNode());
             newNode.setEndNode(n.isEndNode());
@@ -120,7 +122,8 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> {
         }
 
         if (!SAVED) {
-            holder.secondParent.setVisibility(View.GONE);
+            holder.astarParent.setVisibility(View.GONE);
+            holder.dijkstraOrBellmanParent.setVisibility(View.GONE);
 
             holder.parent.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -134,14 +137,6 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> {
                         nodes.set(position, boundNode);
                         notifyItemChanged(position);
                     }
-
-                /*
-                if (holder.secondParent.getVisibility() == View.VISIBLE) {
-                    holder.secondParent.setVisibility(View.GONE);
-                } else {
-                    holder.secondParent.setVisibility(View.VISIBLE);
-                }
-                 */
                 }
             });
 
@@ -185,27 +180,63 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> {
                 }
             });
         } else {
-            if (!boundNode.isObstruction() && !boundNode.isStartNode() && !boundNode.isEndNode() && !(boundNode.g == Integer.MAX_VALUE)) {
-                holder.txtFCost.setText(String.valueOf(boundNode.f));
-                holder.txtGCost.setText(String.valueOf(boundNode.g));
-                holder.txtHCost.setText(String.valueOf(boundNode.h));
+            switch (type) {
+                case ConfigActivity.A_STAR:
+                    if (!boundNode.isObstruction() && !boundNode.isStartNode() && !boundNode.isEndNode() && !(boundNode.g == Integer.MAX_VALUE)) {
+                        holder.txtFCost.setText(String.valueOf(boundNode.f));
+                        holder.txtGCost.setText(String.valueOf(boundNode.g));
+                        holder.txtHCost.setText(String.valueOf(boundNode.h));
 
-                if (boundNode.isOnPath()) {
-                    Log.d(TAG, "onBindViewHolder:PATH " + boundNode.x + " " + boundNode.y);
-                    holder.secondParent.setVisibility(View.VISIBLE);
-                    holder.parent.setBackgroundColor(context.getResources().getColor(R.color.blue));
-                } else if (boundNode.isOpen()) {
-                    Log.d(TAG, "onBindViewHolder:OPEN " + boundNode.x + " " + boundNode.y);
-                    holder.secondParent.setVisibility(View.VISIBLE);
-                    holder.parent.setBackgroundColor(context.getResources().getColor(R.color.green));
-                } else if (!boundNode.isOpen()) {
-                    Log.d(TAG, "onBindViewHolder:CLOSED " + boundNode.x + " " + boundNode.y);
-                    holder.secondParent.setVisibility(View.VISIBLE);
-                    holder.parent.setBackgroundColor(context.getResources().getColor(R.color.red));
-                }
-            } else {
-                holder.secondParent.setVisibility(View.GONE);
+                        if (boundNode.isOnPath()) {
+                            Log.d(TAG, "onBindViewHolder:PATH " + boundNode.x + " " + boundNode.y);
+                            holder.astarParent.setVisibility(View.VISIBLE);
+                            holder.parent.setBackgroundColor(context.getResources().getColor(R.color.blue));
+                        } else if (boundNode.getOpen() == 1) {
+                            Log.d(TAG, "onBindViewHolder:OPEN " + boundNode.x + " " + boundNode.y);
+                            holder.astarParent.setVisibility(View.VISIBLE);
+                            holder.parent.setBackgroundColor(context.getResources().getColor(R.color.green));
+                        } else if (boundNode.getOpen() == 0) {
+                            Log.d(TAG, "onBindViewHolder:CLOSED " + boundNode.x + " " + boundNode.y);
+                            holder.astarParent.setVisibility(View.VISIBLE);
+                            holder.parent.setBackgroundColor(context.getResources().getColor(R.color.red));
+                        }
+                    } else {
+                        holder.astarParent.setVisibility(View.GONE);
+                    }
+                    break;
+                case ConfigActivity.BELLMAN_FORD:
+                case ConfigActivity.DIJKSTRA:
+                    if (!boundNode.isObstruction() && !boundNode.isStartNode() && !boundNode.isEndNode() && !(boundNode.cost == Integer.MAX_VALUE)) {
+                        holder.txtCost.setText(String.valueOf(boundNode.cost));
 
+                        if (boundNode.isOnPath()) {
+                            holder.dijkstraOrBellmanParent.setVisibility(View.VISIBLE);
+                            holder.parent.setBackgroundColor(context.getResources().getColor(R.color.blue));
+                        } else if (boundNode.getOpen() == 1) {
+                            holder.dijkstraOrBellmanParent.setVisibility(View.VISIBLE);
+                            holder.parent.setBackgroundColor(context.getResources().getColor(R.color.green));
+                        } else if (boundNode.getOpen() == 0) {
+                            holder.dijkstraOrBellmanParent.setVisibility(View.VISIBLE);
+                            holder.parent.setBackgroundColor(context.getResources().getColor(R.color.red));
+                        }
+
+                    } else {
+                        holder.dijkstraOrBellmanParent.setVisibility(View.GONE);
+                    }
+                    break;
+                case ConfigActivity.DFS:
+                    if (!boundNode.isObstruction() && !boundNode.isStartNode() && !boundNode.isEndNode()) {
+                        if (boundNode.isOnPath()) {
+                            holder.parent.setBackgroundColor(context.getResources().getColor(R.color.blue));
+                        } else if (boundNode.getOpen() == 1) {
+                            holder.parent.setBackgroundColor(context.getResources().getColor(R.color.green));
+                        } else if (boundNode.getOpen() == 0) {
+                            holder.parent.setBackgroundColor(context.getResources().getColor(R.color.red));
+                        }
+                    }
+                    break;
+                default:
+                    break;
             }
         }
     }
@@ -242,8 +273,8 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> {
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView txtFCost, txtStartNode, txtEndNode, txtGCost, txtHCost;
-        private RelativeLayout parent, secondParent;
+        private TextView txtFCost, txtStartNode, txtEndNode, txtGCost, txtHCost, txtCost;
+        private RelativeLayout parent, astarParent, dijkstraOrBellmanParent;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -251,9 +282,11 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> {
             txtStartNode = itemView.findViewById(R.id.txtStartNode);
             txtEndNode = itemView.findViewById(R.id.txtEndNode);
             parent = itemView.findViewById(R.id.parent);
-            secondParent = itemView.findViewById(R.id.secondParent);
+            astarParent = itemView.findViewById(R.id.astarParent);
+            dijkstraOrBellmanParent = itemView.findViewById(R.id.dijkstraOrBellmanParent);
             txtGCost = itemView.findViewById(R.id.txtGCost);
             txtHCost = itemView.findViewById(R.id.txtHCost);
+            txtCost = itemView.findViewById(R.id.txtCost);
         }
     }
 }

@@ -25,15 +25,22 @@ import com.example.pathfindingapp.Graph.Node;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.PriorityQueue;
+import java.util.Queue;
+import java.util.Stack;
 
+// TODO: 14/09/2021 solution to stop algorithm running
 public class PathfindingActivity extends AppCompatActivity {
+    // 115 for my phone
+    // 65 for emulator
     private static final String TAG = "MainActivity";
     private static boolean stop = false;
     private static boolean running = false;
     private RecyclerView recView;
     private GridAutofitLayoutManager manager;
     private NodeAdapter adapter;
+    private AlgorithmThread algorithmThread;
     private int spanCount, numberOfRows;
     private static String type;
     private static int millisecondsIncrement;
@@ -52,8 +59,8 @@ public class PathfindingActivity extends AppCompatActivity {
             type = intent.getStringExtra(ConfigActivity.TYPE_ALGORITHM);
 
             if (spanCount != -1 && numberOfRows != -1 && millisecondsIncrement != -1 && type != null) {
-                adapter = new NodeAdapter(this);
-                manager = new GridAutofitLayoutManager(this, 115, null);
+                adapter = new NodeAdapter(this, type);
+                manager = new GridAutofitLayoutManager(this, 65, null);
                 recView.setAdapter(adapter);
                 recView.setLayoutManager(manager);
                 setupAdapter();
@@ -72,7 +79,7 @@ public class PathfindingActivity extends AppCompatActivity {
         ArrayList<Node> nodes = new ArrayList<>();
         int totalNodes = spanCount * numberOfRows;
         for (int i = 0; i < totalNodes; i++) {
-            nodes.add(new Node(i + 1));
+            nodes.add(new Node((i + 1), type));
         }
         adapter.setNodes(nodes);
     }
@@ -102,7 +109,7 @@ public class PathfindingActivity extends AppCompatActivity {
     }
 
     private void runAlgorithm(Node startNode, Node endNode) {
-        AlgorithmThread algorithmThread = new AlgorithmThread(startNode, endNode);
+        algorithmThread = new AlgorithmThread(startNode, endNode);
         algorithmThread.start();
     }
 
@@ -205,6 +212,10 @@ public class PathfindingActivity extends AppCompatActivity {
                         NodeAdapter.END_NODE_EXISTS = false;
                         stop = false;
                         running = false;
+
+                        if (algorithmThread != null) {
+                            algorithmThread.stopRunningAlgorithm();
+                        }
 
                         Intent intent = new Intent(PathfindingActivity.this, ConfigActivity.class);
                         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -381,13 +392,19 @@ public class PathfindingActivity extends AppCompatActivity {
         }
 
     }
+
     // TODO: 13/09/2021 add other algorithms
     private class AlgorithmThread extends Thread {
+        private  boolean permStop = false;
         private final Node startNode, endNode;
+        private ArrayList<Node> allNodes;
+        private final int size;
 
         public AlgorithmThread(Node startNode, Node endNode) {
             this.startNode = startNode;
             this.endNode = endNode;
+            this.size = adapter.getItemCount();
+            allNodes = adapter.getNodes();
         }
 
         public Node aStar(Node startNode, Node endNode) throws InterruptedException {
@@ -407,7 +424,7 @@ public class PathfindingActivity extends AppCompatActivity {
                     }
 
                     for (Edge edge : n.getEdges()) {
-                        Node m = edge.getTo();
+                        Node m = edge.to;
                         int totalWeight = n.g + edge.getWeight();
 
                         if (!m.isObstruction()) {
@@ -416,7 +433,7 @@ public class PathfindingActivity extends AppCompatActivity {
                                 m.g = totalWeight;
                                 m.f = m.g + m.calculateHeuristic(endNode);
                                 openList.add(m);
-                                m.setOpen(true);
+                                m.setOpen(1);
                                 showProgressOnAdapter(m);
                             } else {
                                 if (totalWeight < m.g) {
@@ -427,7 +444,7 @@ public class PathfindingActivity extends AppCompatActivity {
                                     if (closedList.contains(m)) {
                                         closedList.remove(m);
                                         openList.add(m);
-                                        m.setOpen(true);
+                                        m.setOpen(1);
 
                                     }
                                     showProgressOnAdapter(m);
@@ -438,7 +455,7 @@ public class PathfindingActivity extends AppCompatActivity {
 
                     openList.remove(n);
                     closedList.add(n);
-                    n.setOpen(false);
+                    n.setOpen(0);
                     showProgressOnAdapter(n);
                     Thread.sleep(millisecondsIncrement);
                 } else {
@@ -447,6 +464,100 @@ public class PathfindingActivity extends AppCompatActivity {
                 }
             }
             return null;
+        }
+
+        public Node dijkstra(Node startNode, Node endNode) throws InterruptedException {
+            PriorityQueue<Node> pq = new PriorityQueue<>();
+            startNode.cost = 0;
+            pq.add(startNode);
+
+            while (!pq.isEmpty()) {
+                if (!stop) {
+                    Node retrievedNode = pq.peek();
+
+                    for (Edge edge : retrievedNode.getEdges()) {
+                        Node adjNode = edge.to;
+                        if (!adjNode.isObstruction()) {
+                            if (edge.getWeight() + retrievedNode.cost < adjNode.cost) {
+                                adjNode.cost = edge.getWeight() + retrievedNode.cost;
+                                adjNode.parent = retrievedNode;
+                                pq.add(adjNode);
+                                adjNode.setOpen(1);
+                                showProgressOnAdapter(adjNode);
+                            }
+                        }
+                    }
+                    Thread.sleep(millisecondsIncrement);
+                    retrievedNode.setOpen(0);
+                    showProgressOnAdapter(retrievedNode);
+                    pq.remove(retrievedNode);
+                    } else {
+                        stopRunningAlgorithm();
+                        break;
+                    }
+            }
+            return endNode;
+        }
+        //quick note, in reality, BF is VERY much worse than dijkstra. Different spot of thread delay added because it just takes too long to update
+        public Node bellmanFord(Node startNode, Node endNode) throws InterruptedException {
+            startNode.cost = 0;
+
+            for (int i = 0; i < size; i++) {
+                if (!stop) {
+                    for (Node nodes : allNodes) {
+                        for (Edge e: nodes.getEdges()) {
+                            Node comparingNode = e.to;
+                            if (!comparingNode.isObstruction()) {
+                                if (nodes.cost + e.getWeight() < comparingNode.cost) {
+                                    if (!(nodes.cost + e.getWeight() < 0)) {
+                                        comparingNode.cost = nodes.cost + e.getWeight();
+                                        comparingNode.parent = nodes;
+                                        comparingNode.setOpen(1);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    if (!allNodes.get(i).isObstruction()) {
+                        showProgressOnAdapter(allNodes.get(i));
+                        allNodes.get(i).setOpen(0);
+                    }
+                    Thread.sleep(millisecondsIncrement);
+                } else {
+                    stopRunningAlgorithm();
+                    break;
+                }
+            }
+            return endNode;
+        }
+
+        public ArrayList<Node> depthFirstSearch(Node startNode, Node endNode) throws InterruptedException {
+            ArrayList<Node> visited = new ArrayList<>();
+            Stack<Node> stack = new Stack<>();
+
+            while (!(startNode == endNode)) {
+                if (!stop) {
+                    if (!visited.contains(startNode)) {
+                        startNode.setOpen(0);
+                        visited.add(startNode);
+                    }
+                    for (Edge e: startNode.getEdges()) {
+                        Node n = e.to;
+                        if (!n.isObstruction()) {
+                            if (!(visited.contains(n))) {
+                                n.setOpen(1);
+                                stack.push(n);
+                            }
+                        }
+                    }
+                    showProgressOnAdapter(startNode);
+                    startNode = stack.peek();
+                    stack.pop();
+                    Thread.sleep(millisecondsIncrement);
+                }
+            }
+            visited.add(endNode);
+            return visited;
         }
 
         public void stopRunningAlgorithm() {
@@ -477,6 +588,16 @@ public class PathfindingActivity extends AppCompatActivity {
             return values;
         }
 
+        public ArrayList<Integer> printWeightlessPath(ArrayList<Node> visited) {
+            ArrayList<Integer> values = new ArrayList<>();
+
+            for (Node n:visited) {
+                values.add(n.getValue());
+            }
+
+            return values;
+        }
+
         public void showProgressOnAdapter(Node n) {
             runOnUiThread(new Runnable() {
                 @Override
@@ -489,6 +610,7 @@ public class PathfindingActivity extends AppCompatActivity {
         @Override
         public void run() {
             Node reached = null;
+            ArrayList<Node> visited = null;
 
             switch (type) {
                 case ConfigActivity.A_STAR:
@@ -499,17 +621,40 @@ public class PathfindingActivity extends AppCompatActivity {
                     }
                     break;
                 case ConfigActivity.DIJKSTRA:
+                    try {
+                        reached = dijkstra(startNode, endNode);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case ConfigActivity.BELLMAN_FORD:
+                    try {
+                        reached = bellmanFord(startNode, endNode);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                case ConfigActivity.DFS:
+                    try {
+                        visited = depthFirstSearch(startNode, endNode);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 default:
                     break;
             }
 
             Node finalReached = reached;
+            ArrayList<Node> finalVisited = visited;
             runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
                     if (finalReached != null) {
                         adapter.showPath(printPath(finalReached));
+                    } else {
+                        if (finalVisited != null) {
+                            adapter.showPath(printWeightlessPath(finalVisited));
+                        }
                     }
                 }
             });

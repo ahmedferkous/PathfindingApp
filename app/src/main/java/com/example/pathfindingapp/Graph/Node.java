@@ -16,8 +16,9 @@ public class Node implements Comparable<Node>{
     }
 
     private int value;
+    private String type;
     private Set<Edge> edges;
-    private boolean open = false;
+    private int open = -1;
     private boolean isOnPath = false;
     private boolean visible = false;
     private boolean startNode = false;
@@ -27,12 +28,14 @@ public class Node implements Comparable<Node>{
     public Node parent;
     public int f = Integer.MAX_VALUE;
     public int g = Integer.MAX_VALUE;
+    public int cost = Integer.MAX_VALUE;
     public int h;
     public int x, y;
 
-    public Node(int value) {
+    public Node(int value, String type) {
         this.edges = new HashSet<>();
         this.value = value;
+        this.type = type;
     }
 
 
@@ -59,11 +62,11 @@ public class Node implements Comparable<Node>{
         isOnPath = onPath;
     }
 
-    public boolean isOpen() {
+    public int getOpen() {
         return open;
     }
 
-    public void setOpen(boolean open) {
+    public void setOpen(int open) {
         this.open = open;
     }
 

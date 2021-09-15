@@ -30,12 +30,7 @@
   <component name="ChangeListManager">
     <list default="true" id="49ff418e-e0c4-4675-8717-a02feec8810b" name="Default Changelist" comment="updated todos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/ConfigActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/ConfigActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/Graph/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/Graph/Node.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/NodeAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/NodeAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/PathfindingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/PathfindingActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_config.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_pathfinding.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_pathfinding.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +190,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631674431711</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Added and fixed Bellman-Ford">
+      <created>1631694455317</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1631694455317</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -222,7 +224,8 @@
     <MESSAGE value="Fixed up BFS" />
     <MESSAGE value="Fixed algorithm bugs" />
     <MESSAGE value="updated icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated icon" />
+    <MESSAGE value="Added and fixed Bellman-Ford" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added and fixed Bellman-Ford" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1245" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1631608852275">
@@ -273,10 +276,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="519" y="330" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1631535841494" />
-    <state x="1032" y="253" key="Vcs.Push.Dialog.v2" timestamp="1631674435435">
+    <state x="1032" y="253" key="Vcs.Push.Dialog.v2" timestamp="1631694459008">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1032" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1631674435435" />
+    <state x="1032" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1631694459008" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1631690610619">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

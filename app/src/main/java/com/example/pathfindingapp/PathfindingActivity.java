@@ -499,6 +499,43 @@ public class PathfindingActivity extends AppCompatActivity {
             return endNode;
         }
 
+        public Node bellmanFord(Node startNode, Node endNode) throws InterruptedException {
+            ArrayList<Node> copyNodes = new ArrayList<>();
+
+            for (Node n : allNodes) {
+                if (!n.isObstruction()) {
+                    if (n.isStartNode()) {
+                        n.cost = 0;
+                    }
+                    copyNodes.add(n);
+                }
+            }
+            for (int i = 0; i < copyNodes.size(); i++) {
+                int changed = 0;
+                for (Node n : copyNodes) {
+                    for (Edge e : n.getEdges()) {
+                        Node comparingNode = e.to;
+                        int tempDistance = n.cost + e.getWeight();
+                        if (tempDistance < comparingNode.cost) {
+                            comparingNode.cost = tempDistance;
+                            comparingNode.parent = n;
+                            comparingNode.setOpen(1);
+                            changed++;
+                        }
+                    }
+                    showProgressOnAdapter(n);
+                    n.setOpen(0);
+                    Thread.sleep(millisecondsIncrement);
+                }
+                if (changed == 0) {
+                    break;
+                }
+
+            }
+
+            return endNode;
+        }
+
         public ArrayList<Node> bestFirstSearch(Node startNode, Node endNode) throws InterruptedException {
             ArrayList<Node> visited = new ArrayList<>();
             PriorityQueue<Node> priorityQueue = new PriorityQueue<>();
@@ -588,44 +625,6 @@ public class PathfindingActivity extends AppCompatActivity {
             } else {
                 return new ArrayList<>();
             }
-        }
-
-        //optimized, if nothing changes it stops
-        public Node bellmanFord(Node startNode, Node endNode) throws InterruptedException {
-            ArrayList<Node> copyNodes = new ArrayList<>();
-
-            for (Node n : allNodes) {
-                if (!n.isObstruction()) {
-                    if (n.isStartNode()) {
-                        n.cost = 0;
-                    }
-                    copyNodes.add(n);
-                }
-            }
-            for (int i = 0; i < copyNodes.size(); i++) {
-                int changed = 0;
-                for (Node n : copyNodes) {
-                    for (Edge e : n.getEdges()) {
-                        Node comparingNode = e.to;
-                        int tempDistance = n.cost + e.getWeight();
-                        if (tempDistance < comparingNode.cost) {
-                            comparingNode.cost = tempDistance;
-                            comparingNode.parent = n;
-                            comparingNode.setOpen(1);
-                            changed++;
-                        }
-                    }
-                    showProgressOnAdapter(n);
-                    n.setOpen(0);
-                    Thread.sleep(millisecondsIncrement);
-                }
-                if (changed == 0) {
-                    break;
-                }
-
-            }
-
-            return endNode;
         }
 
         public void stopRunningAlgorithm() {

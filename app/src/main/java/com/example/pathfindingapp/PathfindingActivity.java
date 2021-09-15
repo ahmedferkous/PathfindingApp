@@ -509,6 +509,7 @@ public class PathfindingActivity extends AppCompatActivity {
                     Node retrievedNode = priorityQueue.peek();
 
                     if (retrievedNode == endNode) {
+                        endNode.found = true;
                         break;
                     }
 
@@ -537,7 +538,11 @@ public class PathfindingActivity extends AppCompatActivity {
                 }
             }
 
-            return visited;
+            if (endNode.found) {
+                return visited;
+            } else {
+                return new ArrayList<>();
+            }
         }
 
         public ArrayList<Node> depthFirstSearch(Node startNode, Node endNode) throws InterruptedException {
@@ -559,17 +564,29 @@ public class PathfindingActivity extends AppCompatActivity {
                             }
                         }
                     }
+
                     showProgressOnAdapter(startNode);
-                    startNode = stack.peek();
-                    stack.pop();
-                    Thread.sleep(millisecondsIncrement);
+                    if (stack.size() > 0) {
+                        startNode = stack.peek();
+                        stack.pop();
+                        if (startNode == endNode) {
+                            endNode.found = true;
+                        }
+                        Thread.sleep(millisecondsIncrement);
+                    } else {
+                        break;
+                    }
                 } else {
                     stopRunningAlgorithm();
                     break;
                 }
             }
-            visited.add(endNode);
-            return visited;
+            if (endNode.found) {
+                visited.add(endNode);
+                return visited;
+            } else {
+                return new ArrayList<>();
+            }
         }
 
         public void stopRunningAlgorithm() {

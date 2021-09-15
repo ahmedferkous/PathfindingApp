@@ -29,6 +29,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="49ff418e-e0c4-4675-8717-a02feec8810b" name="Default Changelist" comment="updated todos">
+      <change afterPath="$PROJECT_DIR$/.idea/assetWizardSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/ConfigActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/ConfigActivity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/Graph/Node.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/Graph/Node.java" afterDir="false" />
@@ -39,7 +40,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[My_phone_API_30]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[MyPhone_API_30]" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -52,10 +53,11 @@
   </component>
   <component name="PropertiesComponent">
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="My_phone_API_30" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-09-14T12:42:27.564Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-09-14T14:01:13.680Z" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../FlashcardMaker" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager">
@@ -163,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631622111609</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Fixed up BFS">
+      <created>1631624179548</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1631624179548</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -176,6 +185,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>
@@ -186,13 +196,22 @@
     <MESSAGE value="Added more algorithms" />
     <MESSAGE value="Added best first search + fixed up problems" />
     <MESSAGE value="Bellman ford is impossible to do on this type of setting, was removed" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bellman ford is impossible to do on this type of setting, was removed" />
+    <MESSAGE value="Fixed up BFS" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed up BFS" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1245" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1631608852275">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1245" y="236" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1631608852275" />
+    <state x="100" y="100" width="776" height="840" key="AVDManager" timestamp="1631665256963">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="100" y="100" width="776" height="840" key="AVDManager/0.0.1920.1040@0.0.1920.1040" timestamp="1631665256963" />
+    <state x="1220" y="275" key="FileChooserDialogImpl" timestamp="1631670178409">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="1220" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1631670178409" />
     <state x="1304" y="418" key="Github.ShareDialog" timestamp="1631535886394">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -201,29 +220,29 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="1142" y="218" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1631535899058" />
-    <state width="1877" height="236" key="GridCell.Tab.0.bottom" timestamp="1631622070891">
+    <state width="1877" height="279" key="GridCell.Tab.0.bottom" timestamp="1631665962289">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="236" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1631622070891" />
-    <state width="1877" height="236" key="GridCell.Tab.0.center" timestamp="1631622070890">
+    <state width="1877" height="279" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1631665962289" />
+    <state width="1877" height="279" key="GridCell.Tab.0.center" timestamp="1631665962288">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="236" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1631622070890" />
-    <state width="1877" height="236" key="GridCell.Tab.0.left" timestamp="1631622070890">
+    <state width="1877" height="279" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1631665962288" />
+    <state width="1877" height="279" key="GridCell.Tab.0.left" timestamp="1631665962288">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="236" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1631622070890" />
-    <state width="1877" height="236" key="GridCell.Tab.0.right" timestamp="1631622070890">
+    <state width="1877" height="279" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1631665962288" />
+    <state width="1877" height="279" key="GridCell.Tab.0.right" timestamp="1631665962288">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="236" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1631622070890" />
+    <state width="1877" height="279" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1631665962288" />
     <state x="519" y="330" key="SettingsEditor" timestamp="1631535841494">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="519" y="330" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1631535841494" />
-    <state x="1032" y="253" key="Vcs.Push.Dialog.v2" timestamp="1631622117387">
+    <state x="1032" y="253" key="Vcs.Push.Dialog.v2" timestamp="1631624183243">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1032" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1631622117387" />
+    <state x="1032" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1631624183243" />
   </component>
 </project>

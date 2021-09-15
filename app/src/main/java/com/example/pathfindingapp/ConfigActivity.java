@@ -23,7 +23,7 @@ import java.util.ArrayList;
 // TODO: 13/09/2021 set min milliseconds 
 public class ConfigActivity extends AppCompatActivity implements GridAutofitLayoutManager.SpanCountUpdatedResult {
     private static final String TAG = "ConfigActivity";
-    public static final int WIDTH = 65;
+    public static final int WIDTH = 115;
     public static final String TYPE_ALGORITHM = "type_algorithm";
     public static final String TYPE_SPAN_COUNT = "type_span_count";
     public static final String TYPE_ROW_COUNT = "type_row_count";

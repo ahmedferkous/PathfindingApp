@@ -10,6 +10,7 @@ import java.util.Set;
 
 public class Node implements Comparable<Node>{
     private static final String TAG = "Node";
+    public static final int MAX_VALUE = 900000;
     @Override
     public int compareTo(Node o) {
         return Double.compare(this.f, o.f);
@@ -27,9 +28,9 @@ public class Node implements Comparable<Node>{
 
     public boolean found = false;
     public Node parent;
-    public int f = Integer.MAX_VALUE;
-    public int g = Integer.MAX_VALUE;
-    public int cost = Integer.MAX_VALUE;
+    public int f = MAX_VALUE;
+    public int g = MAX_VALUE;
+    public int cost = MAX_VALUE;
     public int h;
     public int x, y;
 

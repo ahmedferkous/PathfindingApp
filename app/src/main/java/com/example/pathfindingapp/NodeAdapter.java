@@ -204,9 +204,10 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> {
                         holder.astarParent.setVisibility(View.GONE);
                     }
                     break;
+                case ConfigActivity.BELLMAN_FORD:
                 case ConfigActivity.BFS:
                 case ConfigActivity.DIJKSTRA:
-                    if (!boundNode.isObstruction() && !boundNode.isStartNode() && !boundNode.isEndNode() && !(boundNode.cost == Integer.MAX_VALUE)) {
+                    if (!boundNode.isObstruction() && !boundNode.isStartNode() && !boundNode.isEndNode() && !(boundNode.cost == Node.MAX_VALUE)) {
                         holder.txtCost.setText(String.valueOf(boundNode.cost));
 
                         if (boundNode.isOnPath()) {

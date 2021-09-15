@@ -24,7 +24,7 @@
         android:id="@+id/pickRelLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="20dp"
+        android:layout_margin="25dp"
         android:visibility="invisible">
 
         <TextView
@@ -43,9 +43,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtNumberOfRows"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:value="10"
-            android:valueFrom="5"
+            android:valueFrom="2"
             android:valueTo="30"
             app:thumbColor="@color/white"
             app:tickVisible="false" />
@@ -56,65 +56,80 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/slider"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:text="Select Your Algorithm"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
 
-        <RadioGroup
-            android:id="@+id/groupRadio"
-            android:layout_width="fill_parent"
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/txtSelect"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:checkedButton="@id/radio_astar">
+            android:id="@+id/nestedView"
+            android:layout_below="@id/txtSelect">
 
-            <!-- In RadioGroup create the 1 Radio Button-->
-            <!-- like this we will add some more Radio Button-->
-            <RadioButton
-                android:id="@+id/radio_astar"
+            <RadioGroup
+                android:id="@+id/groupRadio"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:text="A* Pathfinding"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
 
-            <RadioButton
-                android:id="@+id/radio_dijk"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Dijkstra's Shortest Path"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:checkedButton="@id/radio_astar">
 
-            <RadioButton
-                android:id="@+id/radio_dfs"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Depth-First Search"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+                <!-- In RadioGroup create the 1 Radio Button-->
+                <!-- like this we will add some more Radio Button-->
+                <RadioButton
+                    android:id="@+id/radio_astar"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="A* Pathfinding"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
-            <RadioButton
-                android:id="@+id/radio_bfs"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="Best-First Search"
-                android:textColor="@color/white"
-                android:textSize="20sp" />
+                <RadioButton
+                    android:id="@+id/radio_dijk"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Dijkstra's Shortest Path"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/radio_bell"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bellman-Ford Shortest Path"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/radio_dfs"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Depth-First Search"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
+
+                <RadioButton
+                    android:id="@+id/radio_bfs"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Best-First Search"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
 
-        </RadioGroup>
+            </RadioGroup>
+        </androidx.core.widget.NestedScrollView>
 
         <TextView
             android:id="@+id/txtEnterSec"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/groupRadio"
+            android:layout_below="@id/nestedView"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:text="Enter Algorithm Increment"
             android:textColor="@color/white"
             android:textSize="20sp"
@@ -125,7 +140,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/txtEnterSec"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:hint="Enter In Milliseconds"
             android:inputType="number"
             android:maxLength="5"

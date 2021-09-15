@@ -17,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.pathfindingapp.Graph.Edge;
@@ -589,6 +590,44 @@ public class PathfindingActivity extends AppCompatActivity {
             }
         }
 
+        //optimized, if nothing changes it stops
+        public Node bellmanFord(Node startNode, Node endNode) throws InterruptedException {
+            ArrayList<Node> copyNodes = new ArrayList<>();
+
+            for (Node n : allNodes) {
+                if (!n.isObstruction()) {
+                    if (n.isStartNode()) {
+                        n.cost = 0;
+                    }
+                    copyNodes.add(n);
+                }
+            }
+            for (int i = 0; i < copyNodes.size(); i++) {
+                int changed = 0;
+                for (Node n : copyNodes) {
+                    for (Edge e : n.getEdges()) {
+                        Node comparingNode = e.to;
+                        int tempDistance = n.cost + e.getWeight();
+                        if (tempDistance < comparingNode.cost) {
+                            comparingNode.cost = tempDistance;
+                            comparingNode.parent = n;
+                            comparingNode.setOpen(1);
+                            changed++;
+                        }
+                    }
+                    showProgressOnAdapter(n);
+                    n.setOpen(0);
+                    Thread.sleep(millisecondsIncrement);
+                }
+                if (changed == 0) {
+                    break;
+                }
+
+            }
+
+            return endNode;
+        }
+
         public void stopRunningAlgorithm() {
             runOnUiThread(new Runnable() {
                 @Override
@@ -617,7 +656,7 @@ public class PathfindingActivity extends AppCompatActivity {
             return values;
         }
 
-        public ArrayList<Integer> printWeightlessPath(ArrayList<Node> visited) {
+        public ArrayList<Integer> printPath(ArrayList<Node> visited) {
             ArrayList<Integer> values = new ArrayList<>();
 
             for (Node n:visited) {
@@ -656,6 +695,13 @@ public class PathfindingActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
                     break;
+                case ConfigActivity.BELLMAN_FORD:
+                    try {
+                        reached = bellmanFord(startNode, endNode);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    break;
                 case ConfigActivity.BFS:
                     try {
                         visited = bestFirstSearch(startNode, endNode);
@@ -683,7 +729,7 @@ public class PathfindingActivity extends AppCompatActivity {
                         adapter.showPath(printPath(finalReached));
                     } else {
                         if (finalVisited != null) {
-                            adapter.showPath(printWeightlessPath(finalVisited));
+                            adapter.showPath(printPath(finalVisited));
                         }
                     }
                 }

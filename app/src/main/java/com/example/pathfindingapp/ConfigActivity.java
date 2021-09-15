@@ -20,7 +20,7 @@ import com.google.android.material.slider.Slider;
 
 import java.util.ArrayList;
 
-// TODO: 13/09/2021 set min milliseconds 
+
 public class ConfigActivity extends AppCompatActivity implements GridAutofitLayoutManager.SpanCountUpdatedResult {
     private static final String TAG = "ConfigActivity";
     public static final int WIDTH = 115;

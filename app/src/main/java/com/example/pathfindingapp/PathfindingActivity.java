@@ -237,7 +237,7 @@ public class PathfindingActivity extends AppCompatActivity {
         public static final String RIGHT_NODE = "RIGHT_NODE";
         public static final String MIDDLE_NODE = "MIDDLE_NODE";
 
-        // n col, k rows, c current row,
+        // n col, k rows, h current row,
         public static String calculateTypeOfNode(int n, int k, int h, int value) {
             if (value == 1) {
                 return TOP_LEFT;

@@ -182,7 +182,7 @@ public class NodeAdapter extends RecyclerView.Adapter<NodeAdapter.ViewHolder> {
         } else {
             switch (type) {
                 case ConfigActivity.A_STAR:
-                    if (!boundNode.isObstruction() && !boundNode.isStartNode() && !boundNode.isEndNode() && !(boundNode.g == Integer.MAX_VALUE)) {
+                    if (!boundNode.isObstruction() && !boundNode.isStartNode() && !boundNode.isEndNode() && !(boundNode.g == Node.MAX_VALUE)) {
                         holder.txtFCost.setText(String.valueOf(boundNode.f));
                         holder.txtGCost.setText(String.valueOf(boundNode.g));
                         holder.txtHCost.setText(String.valueOf(boundNode.h));

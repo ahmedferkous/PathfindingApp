@@ -30,14 +30,13 @@
   <component name="ChangeListManager">
     <list default="true" id="49ff418e-e0c4-4675-8717-a02feec8810b" name="Default Changelist" comment="updated todos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/PathfindingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/pathfindingapp/PathfindingActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[MyPhone_API_30]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -61,7 +60,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AndroidDocs/ViewModelExample" />
     <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
   </component>
   <component name="RunManager">
@@ -197,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631694455317</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="-">
+      <created>1631707136104</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1631707136104</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -225,7 +231,8 @@
     <MESSAGE value="Fixed algorithm bugs" />
     <MESSAGE value="updated icon" />
     <MESSAGE value="Added and fixed Bellman-Ford" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added and fixed Bellman-Ford" />
+    <MESSAGE value="-" />
+    <option name="LAST_COMMIT_MESSAGE" value="-" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1245" y="236" key="#com.intellij.ide.util.MemberChooser" timestamp="1631608852275">
@@ -244,10 +251,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="540" y="275" key="AndroidCreateResourceFileDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1631673755363" />
-    <state x="1220" y="275" key="FileChooserDialogImpl" timestamp="1631677427957">
+    <state x="1220" y="275" key="FileChooserDialogImpl" timestamp="1632127349838">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1220" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1631677427957" />
+    <state x="1220" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1632127349838" />
     <state x="1304" y="418" key="Github.ShareDialog" timestamp="1631535886394">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -276,10 +283,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="519" y="330" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1631535841494" />
-    <state x="1032" y="253" key="Vcs.Push.Dialog.v2" timestamp="1631694459008">
+    <state x="1032" y="253" key="Vcs.Push.Dialog.v2" timestamp="1631707140403">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="1032" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1631694459008" />
+    <state x="1032" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1631707140403" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1631690610619">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
